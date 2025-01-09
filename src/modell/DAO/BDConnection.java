@@ -24,7 +24,7 @@ public class BDConnection {
         this.porta = "3306";
         this.BD = "gestaoeventos";
         this.user = "root";
-        this.password = "4567";
+        this.password = "****"; // use your own
     }
 
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
