@@ -5,8 +5,6 @@
 package VIEW;
 
 import Controller.TelaEH;
-import modell.DAO.InscricoesDAO;
-import modell.Inscricoes;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +12,8 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.table.DefaultTableModel;
+import modell.DAO.InscricoesDAO;
+import modell.Inscricoes;
 
 /**
  *
@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Tela extends JFrame {
 
-    static JLabel tema, tema2, tema3;
+    static JLabel titulo, titulo2, titulo3;
     static JComboBox<String> jcb;
     static ArrayList<Inscricoes> inscritosTodos;
     static ArrayList<String> eventos;
@@ -30,20 +30,21 @@ public class Tela extends JFrame {
     static DefaultTableModel model;
     static DefaultComboBoxModel<String> cbxModel;
     static JButton updBtn;
-    static JPanel p, pN, pC, pP, pS;
+    static JPanel painelTitulo, painelNorte, pC, pP, pS;
     static InscricoesDAO inscricoesDAO;
 
     public Tela() {
+        // configurações essencias da Janela
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setSize(600, 600);
-        tema = new JLabel("Menu de gerenciamento de inscrições");
-        p = new JPanel();
-        p.add(tema);
+        titulo = new JLabel("Menu de gerenciamento de inscrições");
+        painelTitulo = new JPanel();
+        painelTitulo.add(titulo);
 
-        add(p, BorderLayout.NORTH);
-        tema2 = new JLabel("Selecione o evento");
-        tema3 = new JLabel("Inscrições do evento:");
+        add(painelTitulo, BorderLayout.NORTH);
+        titulo2 = new JLabel("Selecione o evento");
+        titulo3 = new JLabel("Inscrições do evento:");
 
         cbxModel = new DefaultComboBoxModel<>();
         inscricoesDAO = new InscricoesDAO();
@@ -87,16 +88,17 @@ public class Tela extends JFrame {
         pS.add(updBtn);
 
         pS.add(gerarBtn);
-        pN = new JPanel();
-        pN.add(tema2);
-        pN.add(jcb);
+
+        // O painel Norte carrega O JComboBox assim como o label que o corresponde
+        painelNorte = new JPanel();
+        painelNorte.add(titulo2);
+        painelNorte.add(jcb);
         pC = new JPanel(new BorderLayout());
-        pC.add(tema3);
+        pC.add(titulo3);
         pC.add(jscp);
         pP = new JPanel(new BorderLayout());
-        pP.add(pN, BorderLayout.NORTH);
+        pP.add(painelNorte, BorderLayout.NORTH);
         pP.add(pC, BorderLayout.CENTER);
-        add(pP, BorderLayout.CENTER);
         add(pP, BorderLayout.CENTER);
         add(pS, BorderLayout.SOUTH);
 

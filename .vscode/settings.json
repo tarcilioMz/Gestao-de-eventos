@@ -3,5 +3,21 @@
         "lib/**/*.jar",
         "c:\\Users\\Muzime\\Desktop\\Estudos 2o Sem\\POO II\\JDBC\\mysql-connector-j-8.0.33.jar",
         "c:\\Users\\Muzime\\Desktop\\Estudos 2o Sem\\POO II\\itextpdf-5.5.9.jar"
+    ],
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "TesteConnect",
+            "database": "gestaoeventos",
+            "username": "root",
+            "askForPassword": true
+        }
     ]
 }
