@@ -30,7 +30,7 @@ public class Tela extends JFrame {
     static DefaultTableModel model;
     static DefaultComboBoxModel<String> cbxModel;
     static JButton updBtn;
-    static JPanel painelTitulo, painelNorte, pC, pP, pS;
+    static JPanel painelTitulo, painelNorte, painelCentral, painelPrinc, painelSul;
     static InscricoesDAO inscricoesDAO;
 
     public Tela() {
@@ -48,7 +48,7 @@ public class Tela extends JFrame {
 
         cbxModel = new DefaultComboBoxModel<>();
         inscricoesDAO = new InscricoesDAO();
-        //inscritosTodos.addAll(inscricoesDAO.inscritosTodos());
+
         model = new DefaultTableModel();
         model.addColumn("Nome do Evento");
         model.addColumn("Nome do Participante");
@@ -84,23 +84,23 @@ public class Tela extends JFrame {
         JButton gerarBtn = new JButton("Gerar Relatório do Evento");
         gerarBtn.setActionCommand(gerarBtn.getText());
         gerarBtn.addActionListener(new TelaEH());
-        pS = new JPanel();
-        pS.add(updBtn);
+        painelSul = new JPanel();
+        painelSul.add(updBtn);
 
-        pS.add(gerarBtn);
+        painelSul.add(gerarBtn);
 
         // O painel Norte carrega O JComboBox assim como o label que o corresponde
         painelNorte = new JPanel();
         painelNorte.add(titulo2);
         painelNorte.add(jcb);
-        pC = new JPanel(new BorderLayout());
-        pC.add(titulo3);
-        pC.add(jscp);
-        pP = new JPanel(new BorderLayout());
-        pP.add(painelNorte, BorderLayout.NORTH);
-        pP.add(pC, BorderLayout.CENTER);
-        add(pP, BorderLayout.CENTER);
-        add(pS, BorderLayout.SOUTH);
+        painelCentral = new JPanel(new BorderLayout());
+        painelCentral.add(titulo3);
+        painelCentral.add(jscp);
+        painelPrinc = new JPanel(new BorderLayout());
+        painelPrinc.add(painelNorte, BorderLayout.NORTH);
+        painelPrinc.add(painelCentral, BorderLayout.CENTER);
+        add(painelPrinc, BorderLayout.CENTER);
+        add(painelSul, BorderLayout.SOUTH);
 
         setVisible(true);
     }

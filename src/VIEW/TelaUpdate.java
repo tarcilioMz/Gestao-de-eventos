@@ -15,56 +15,58 @@ import modell.Inscricoes;
  */
 public class TelaUpdate extends JFrame {
 
-    static JLabel tema, tb, st;
+    static JLabel tema, tipoBilhete, statusIncricao;
     static JButton salvar, cancelar;
     static JComboBox<String> sts;
     static JRadioButton op1, op2;
-    static JPanel p1, p2, p3, p4, p5;
-    static TelaUpdate instar;
+    static JPanel painelTema, painelRadio, painelSelect, painelPrinc, painelBtns;
+    static TelaUpdate instancia;
 
     public TelaUpdate() {
-        instar = this;
+        // Instancia da classe
+        instancia = this;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setSize(400, 300);
         tema = new JLabel("Actualização da Inscrição");
-        tb = new JLabel("Tipo de Bilhete ");
-        st = new JLabel("Status da Inscrição");
-        p1 = new JPanel();
-        p1.add(tema);
+        tipoBilhete = new JLabel("Tipo de Bilhete ");
+        statusIncricao = new JLabel("Status da Inscrição");
+        painelTema = new JPanel();
+        painelTema.add(tema);
 
         op1 = new JRadioButton("VIP");
         op2 = new JRadioButton("Normal");
         ButtonGroup group = new ButtonGroup();
         group.add(op1);
         group.add(op2);
-        p2 = new JPanel();
-        p2.add(tb);
-        p2.add(op1);
-        p2.add(op2);
-        
-        String[] stts = {"Confirmado", "Pendente", "Cancelado"};
-        sts = new JComboBox<>(stts);
-        p3 = new JPanel();
-        p3.add(st);
-        p3.add(sts);
-        
-        add(p1, BorderLayout.NORTH);
-        p4 = new JPanel(new BorderLayout());
-        p4.add(p2, BorderLayout.NORTH);
-        p4.add(p3, BorderLayout.CENTER);
-        add(p4, BorderLayout.CENTER);
-        
+        painelRadio = new JPanel();
+        painelRadio.add(tipoBilhete);
+        painelRadio.add(op1);
+        painelRadio.add(op2);
+
+        String[] statusOps = {"Confirmado", "Pendente", "Cancelado"};
+        sts = new JComboBox<>(statusOps);
+        painelSelect = new JPanel();
+        painelSelect.add(statusIncricao);
+        painelSelect.add(sts);
+
+        add(painelTema, BorderLayout.NORTH);
+        painelPrinc = new JPanel(new BorderLayout());
+        painelPrinc.add(painelRadio, BorderLayout.NORTH);
+        painelPrinc.add(painelSelect, BorderLayout.CENTER);
+        add(painelPrinc, BorderLayout.CENTER);
+
+        // Criação e config. dos Botões da Janela
         salvar = new JButton("Guardar");
         cancelar = new JButton("Cancelar");
         cancelar.setActionCommand(cancelar.getText());
         cancelar.addActionListener(new TelaUpdateEH());
         salvar.setActionCommand(salvar.getText());
         salvar.addActionListener(new TelaUpdateEH());
-        p5 = new JPanel();
-        p5.add(cancelar);
-        p5.add(salvar);
-        add(p5, BorderLayout.SOUTH);
+        painelBtns = new JPanel();
+        painelBtns.add(cancelar);
+        painelBtns.add(salvar);
+        add(painelBtns, BorderLayout.SOUTH);
         setVisible(true);
 
     }
@@ -80,7 +82,7 @@ public class TelaUpdate extends JFrame {
     }
 
     public static void setVisibleOff() {
-        instar.setVisible(false);
+        instancia.setVisible(false);
     }
 
     public static Inscricoes devolveDados() {
