@@ -5,6 +5,9 @@
 package Controller;
 
 import VIEW.Tela;
+import java.sql.Date;
+import modell.Eventos;
+import modell.DAO.EventosDAO;
 
 /**
  *
@@ -17,7 +20,15 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Tela u = new Tela();
+        // Tela u = new Tela();
+        // Seccao de testes de novas funcionalidades
+        EventosDAO eventosDAO = new EventosDAO();
+        Eventos evento = new Eventos();
+        evento.setNomeEvento("DataWave 2024");
+        evento.setLocalEvento("Centro Cultural Moçambique-China");
+        evento.setDataEvento(Date.valueOf("2024-08-15"));
+        evento.setOrganizadores("MozDevz, Vodacom, BCX");
+        eventosDAO.guardarEvento(evento);
+
     }
-    
 }

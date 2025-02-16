@@ -19,5 +19,11 @@
             "username": "root",
             "askForPassword": true
         }
+    ],
+    "files.autoSave": "afterDelay",
+    "editor.wordWrap": "on",
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.configuration.runtimes": [
+        
     ]
 }
